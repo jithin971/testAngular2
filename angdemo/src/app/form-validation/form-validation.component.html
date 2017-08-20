@@ -1,0 +1,31 @@
+<div class="col-sm-6">
+  <div *ngIf="errorMessage" class="alert alert-danger"> 
+    {{ errorMessage }}
+  </div>
+  
+  <h3>
+    Create New Employee test
+  </h3>
+
+  <form (ngSubmit)="checkerr()" [formGroup]="createForm">
+
+     <div class="form-group" 
+        [ngClass]="{'has-error': formErrors.fname, 
+                    'has-success' : !formErrors.fname }">
+      Emp No
+      <input type="text" name="fname" 
+        class="form-control" formControlName="fname" />
+
+        <span class="help-block" *ngIf="formErrors.fname">
+          {{ formErrors.fname }}
+        </span>
+    </div>
+
+   
+
+    <input type="submit" class="btn btn-info" 
+        [disabled]="!isFormValid"/>
+
+  </form>
+  
+</div>
